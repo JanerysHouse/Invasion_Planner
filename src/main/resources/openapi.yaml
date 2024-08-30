@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: Invasion Planner API
+  version: 1.0.0
+  description: API for managing alien invasion plans
+
+paths:
+  /invasion-plans:
+    get:
+      summary: Get all invasion plans
+      operationId: getAllInvasionPlans
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvasionPlanResponse'
+    post:
+      summary: Create a new invasion plan
+      operationId: createInvasionPlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvasionPlanRequest'
+      responses:
+        '201':
+          description: Invasion plan created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvasionPlanResponse'
+
+  /invasion-plans/{id}:
+    get:
+      summary: Get an invasion plan by ID
+      operationId: getInvasionPlanById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvasionPlanResponse'
+        '404':
+          description: Invasion plan not found
+
+components:
+  schemas:
+    InvasionPlanRequest:
+      title: InvasionPlanRequest
+      type: object
+      required:
+        - planName
+        - alienCivilizationId
+      properties:
+        planId:
+          type: string
+          format: uuid
+
+        planName:
+          type: string
+        alienCivilizationId:
+          type: string
+          format: uuid
+        resourceIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        targetIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        defenseSystemIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+
+    InvasionPlanResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        planName:
+          type: string
+        alienCivilization:
+          $ref: '#/components/schemas/AlienCivilizationItem'
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResourceItem'
+        targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/TargetItem'
+        defenseSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/DefenseSystemItem'
+
+    AlienCivilizationItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+
+    ResourceItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        resourceName:
+          type: string
+
+    TargetItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        targetName:
+            type: string
+
+
+    DefenseSystemItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        defenseName:
+          type: string
+  
