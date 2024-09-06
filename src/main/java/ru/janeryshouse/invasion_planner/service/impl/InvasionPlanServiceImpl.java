@@ -73,7 +73,6 @@ public class InvasionPlanServiceImpl implements InvasionPlanService {
         if (id == null) {
             log.warn("Не удалось удалить план вторжения: входной id не может быть null.");
         }
-        invasionPlanRepository.deleteBy(id);
-
+        invasionPlanRepository.deleteById(id);
     }
 }

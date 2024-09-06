@@ -60,8 +60,5 @@ public class InvasionPlanMapper {
 
 
     }
-    public static InvasionPlan toEntity(InvasionPlanRequest request) {
-        var alien = request.getAlienCivilizationId();
-    }
 
 }

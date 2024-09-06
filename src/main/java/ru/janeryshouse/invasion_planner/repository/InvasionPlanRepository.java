@@ -8,8 +8,6 @@ import java.util.UUID;
 
 public interface InvasionPlanRepository extends JpaRepository<InvasionPlan, UUID> {
 
-    void deleteBy(UUID id);
-
     Optional<InvasionPlan> getInvasionPlanById(UUID id);
 
     Optional<InvasionPlan> getAllBy();
