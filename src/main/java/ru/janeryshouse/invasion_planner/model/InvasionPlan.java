@@ -1,8 +1,6 @@
 package ru.janeryshouse.invasion_planner.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -47,4 +45,5 @@ public class InvasionPlan {
             inverseJoinColumns = @JoinColumn(name = "defense_system_list")
     )
     private List<DefenseSystem> defenseSystemList = new ArrayList<>();
+
 }

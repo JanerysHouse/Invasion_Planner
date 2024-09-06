@@ -1,13 +1,11 @@
 package ru.janeryshouse.invasion_planner.mapper;
 
 import lombok.experimental.UtilityClass;
-import org.openapitools.client.model.*;
 import ru.janeryshouse.invasion_planner.model.*;
-import ru.janeryshouse.invasion_planner.utils.ValidationUtils;
+import ru.janeryshouse.invasion_planner.openapi.model.*;
 
 import java.util.UUID;
 import java.util.function.Function;
-
 
 import static java.util.stream.Collectors.toList;
 
@@ -20,12 +18,6 @@ public class InvasionPlanMapper {
                                         Function<UUID, Resource> resourceFactory,
                                         Function<UUID, Target> targetFactory,
                                         Function<UUID, DefenseSystem> defenseSystemFactory) {
-
-        ValidationUtils.validateInvasionPlanRequest(request,
-                alienCivilization,
-                resourceFactory,
-                targetFactory,
-                defenseSystemFactory);
 
         return new InvasionPlan()
                 .setId(UUID.randomUUID())
@@ -67,6 +59,9 @@ public class InvasionPlanMapper {
                         );
 
 
+    }
+    public static InvasionPlan toEntity(InvasionPlanRequest request) {
+        var alien = request.getAlienCivilizationId();
     }
 
 }

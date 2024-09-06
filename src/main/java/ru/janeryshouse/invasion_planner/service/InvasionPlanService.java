@@ -1,15 +1,15 @@
 package ru.janeryshouse.invasion_planner.service;
 
-import ru.janeryshouse.invasion_planner.model.InvasionPlan;
+import ru.janeryshouse.invasion_planner.openapi.model.InvasionPlanRequest;
+import ru.janeryshouse.invasion_planner.openapi.model.InvasionPlanResponse;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface InvasionPlanService {
 
-    public List<InvasionPlan> getAllInvasionPlans();
-    public Optional<InvasionPlan> getInvasionPlanById(UUID id);
-    public Optional<InvasionPlan> createInvasionPlan(InvasionPlan invasionPlan);
-    public void deleteInvasionPlan(UUID id);
+    List<InvasionPlanResponse> getAllInvasionPlans();
+    InvasionPlanResponse getInvasionPlanById(UUID id);
+    InvasionPlanResponse createInvasionPlan(InvasionPlanRequest request);
+    void deleteInvasionPlan(UUID id);
 }

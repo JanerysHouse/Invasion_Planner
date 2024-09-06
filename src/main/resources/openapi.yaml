@@ -55,6 +55,21 @@ paths:
                 $ref: '#/components/schemas/InvasionPlanResponse'
         '404':
           description: Invasion plan not found
+    delete:
+      summary: Delete an invasion plan by ID
+      operationId: deleteInvasionPlanById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Invasion plan successfully deleted
+        '404':
+          description: Invasion plan not found
 
 components:
   schemas:

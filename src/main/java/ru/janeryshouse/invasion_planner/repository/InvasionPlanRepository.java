@@ -1,17 +1,16 @@
 package ru.janeryshouse.invasion_planner.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import ru.janeryshouse.invasion_planner.model.InvasionPlan;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface InvasionPlanRepository {
+public interface InvasionPlanRepository extends JpaRepository<InvasionPlan, UUID> {
 
-    public List<InvasionPlan> getAllInvasionPlans();
-    public Optional<InvasionPlan> getInvasionPlanById(UUID id);
-    public Optional<InvasionPlan> saveInvasionPlan(InvasionPlan invasionPlan);
-    public void deleteInvasionPlan(UUID id);
+    void deleteBy(UUID id);
 
+    Optional<InvasionPlan> getInvasionPlanById(UUID id);
 
+    Optional<InvasionPlan> getAllBy();
 }

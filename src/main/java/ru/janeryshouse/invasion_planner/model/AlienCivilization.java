@@ -25,4 +25,5 @@ public class AlienCivilization {
 
     @OneToMany(mappedBy = "alienCivilization", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AlienFleet> alienFleetList = new ArrayList<>();
+
 }
