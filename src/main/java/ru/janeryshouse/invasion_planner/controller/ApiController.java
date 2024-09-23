@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@RestController
+@RestController("/v1/api/")
 @RequiredArgsConstructor
 public class ApiController implements InvasionPlansApi {
 

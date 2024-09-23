@@ -8,3 +8,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/db
   liquibase:
     change-log: classpath:liquibase/master.xml
+  kafka:
+    consumer:
+      group-id: invasion
+    bootstrap-servers: localhost:9092
